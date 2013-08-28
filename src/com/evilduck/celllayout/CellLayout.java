@@ -23,12 +23,28 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 
+/**
+ * A layout manager that allows splitting parents area into evenly sized cells
+ * grid. Each child can be positioned acress one or several cells.
+ * 
+ * @author aosmanov
+ */
 public class CellLayout extends ViewGroup {
 
+    /**
+     * Default size in dp that will be used for a cell in case no other clues
+     * were given by parent.
+     */
     private static final int DEFAULT_CELL_SIZE = 48;
 
+    /**
+     * Number of coumns.
+     */
     private int columns = 4;
 
+    /**
+     * An optional margin to be applied to each child.
+     */
     private int spacing = 0;
 
     private float cellSize;
@@ -158,25 +174,25 @@ public class CellLayout extends ViewGroup {
 
     public static class LayoutParams extends ViewGroup.LayoutParams {
 
+	/**
+	 * An Y coordinate of the top most cell the view resides in.
+	 */
 	int top = 0;
 
+	/**
+	 * An X coordinate of the left most cell the view resides in.
+	 */
 	int left = 0;
 
+	/**
+	 * Number of cells occupied by the view horizontally.
+	 */
 	int width = 1;
 
+	/**
+	 * Number of cells occupied by the view vertically.
+	 */
 	int height = 1;
-
-	public LayoutParams() {
-	    super(MATCH_PARENT, MATCH_PARENT);
-	    top = 0;
-	    left = 1;
-	}
-
-	public LayoutParams(int width, int height) {
-	    super(width, height);
-	    top = 0;
-	    left = 1;
-	}
 
 	public LayoutParams(Context context, AttributeSet attrs) {
 	    super(context, attrs);
@@ -191,6 +207,14 @@ public class CellLayout extends ViewGroup {
 
 	public LayoutParams(ViewGroup.LayoutParams params) {
 	    super(params);
+	}
+
+	public LayoutParams() {
+	    this(MATCH_PARENT, MATCH_PARENT);
+	}
+
+	public LayoutParams(int width, int height) {
+	    super(width, height);
 	}
 
     }
