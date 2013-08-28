@@ -207,6 +207,14 @@ public class CellLayout extends ViewGroup {
 
 	public LayoutParams(ViewGroup.LayoutParams params) {
 	    super(params);
+
+	    if (params instanceof LayoutParams) {
+		LayoutParams cellLayoutParams = (LayoutParams) params;
+		left = cellLayoutParams.left;
+		top = cellLayoutParams.top;
+		height = cellLayoutParams.height;
+		width = cellLayoutParams.width;
+	    }
 	}
 
 	public LayoutParams() {
