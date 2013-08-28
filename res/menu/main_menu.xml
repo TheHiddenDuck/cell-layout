@@ -3,6 +3,8 @@
 
     <item
         android:id="@+id/rearrange"
+        android:icon="@drawable/ic_action_av_shuffle"
+        android:showAsAction="always"
         android:title="@string/shuffle">
     </item>
 
