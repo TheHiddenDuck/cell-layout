@@ -110,9 +110,9 @@ public class CellLayout extends ViewGroup {
 	    int bottom = top + h;
 
 	    int childWidthSpec = MeasureSpec.makeMeasureSpec((int) (w * cellSize) - spacing * 2,
-		    LayoutParams.MATCH_PARENT);
+		    MeasureSpec.EXACTLY);
 	    int childHeightSpec = MeasureSpec.makeMeasureSpec((int) (h * cellSize) - spacing * 2,
-		    LayoutParams.MATCH_PARENT);
+		    MeasureSpec.EXACTLY);
 	    child.measure(childWidthSpec, childHeightSpec);
 
 	    if (bottom > maxRow) {
@@ -123,7 +123,7 @@ public class CellLayout extends ViewGroup {
 	int measuredHeight = Math.round(maxRow * cellSize) + getPaddingTop() + getPaddingBottom();
 	if (heightMode == MeasureSpec.EXACTLY) {
 	    height = MeasureSpec.getSize(heightMeasureSpec);
-	} else if (heightMode == MeasureSpec.EXACTLY) {
+	} else if (heightMode == MeasureSpec.AT_MOST) {
 	    int atMostHeight = MeasureSpec.getSize(heightMeasureSpec);
 	    height = Math.min(atMostHeight, measuredHeight);
 	} else {
